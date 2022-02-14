@@ -1,0 +1,16 @@
+
+<style>
+h2 {text-align: center;}
+</style>
+
+<h2>Welcome to the Bookmark Challenge</h2>
+<br>
+<h3 style="padding-left:150px;">Bookmark List</h3>
+<br>
+<h4 style="padding-left:125px;">
+  <ul>
+    <% @bookmarks.each do |bookmark| %>
+      <li><%= bookmark %> <br></li>
+    <% end %>
+ </ul>
+</h4>

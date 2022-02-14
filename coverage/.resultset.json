@@ -1,9 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/janeparsons/Projects/Bookmark_challenge/spec/features/infrastructure_setup_spec.rb": {
+      "/Users/janeparsons/Projects/bookmark-challengeJP/spec/bookmark_spec.rb": {
         "lines": [
           null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/janeparsons/Projects/bookmark-challengeJP/spec/features/bookmarks_spec.rb": {
+        "lines": [
+          null,
+          1,
           1,
           1,
           1,
@@ -12,8 +28,20 @@
           null,
           null
         ]
+      },
+      "/Users/janeparsons/Projects/bookmark-challengeJP/spec/features/infrastructure_setup_spec.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1644858666
+    "timestamp": 1644870294
   }
 }
