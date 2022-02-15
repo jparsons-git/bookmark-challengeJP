@@ -8,6 +8,7 @@ group :test do
   gem 'capybara'
   gem 'rspec'
   gem "sinatra"
+  gem 'pg'
   gem "webrick"
   gem "sinatra-contrib"
   gem 'simplecov', require: false
