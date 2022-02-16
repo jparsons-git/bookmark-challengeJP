@@ -10,7 +10,9 @@ h2 {text-align: center;}
 <h4 style="padding-left:125px;">
   <ul>
     <% @bookmarks.each do |bookmark| %>
-      <li><%= bookmark.title %> <br></li>
+      <li>
+        <a href="<%= bookmark.url %>"><%= bookmark.title %></a><br>
+      </li>
     <% end %>
  </ul>
 </h4>

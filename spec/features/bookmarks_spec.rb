@@ -25,7 +25,7 @@ feature 'Bookmark testing' do
     expect(page).to have_content 'Google'
   end
 
-  scenario 'test to add a bookmark to the list' do
+  scenario 'test to add a bookmark to the list and that in fact it is a link' do
     # set connection to the test database
     connection = PG.connect(dbname: 'bookmark_manager_test')
     # Use the Bookmark's functionality to insert new url's 
@@ -37,5 +37,10 @@ feature 'Bookmark testing' do
     expect(page).to have_content 'Welcome to the Bookmark Challenge'
     expect(page).to have_content 'Bookmark List'
     expect(page).to have_content 'Makers Academy'
+    # TODO TWO lines below work - what's the difference?
+    expect(page).to have_link('', href: 'http://www.makersacademy.com')
+    expect(page).to have_link(href: 'http://www.makersacademy.com')
+    # TODO This line below doesn't - why?
+    # expect(page).to have_link('http://www.makersacademy.com')
   end
 end
