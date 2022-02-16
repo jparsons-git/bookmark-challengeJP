@@ -14,3 +14,44 @@ h2 {text-align: center;}
     <% end %>
  </ul>
 </h4>
+
+<h3 style="padding-left:150px;">Actions</h3>
+
+<h4 style="padding-left:130px;">
+  <form action="/choice" method="post">
+    <% if @user_choice == "add" %>
+      <input type="radio" class="add" id="add" name="choice" value="add" onClick='this.form.submit();' checked="checked">
+    <% else %>
+      <input type="radio" id="add" name="choice" value="add" onClick='this.form.submit();'>
+    <% end %>
+    <label for="add">Add Bookmark</label><br>
+    <% if @user_choice == "delete" %>
+      <input type="radio" class="delete" id="delete" name="choice" value="delete" onClick='this.form.submit();' checked="checked">
+    <% else %>
+      <input type="radio" id="delete" name="choice" value="delete" onClick='this.form.submit();'>
+    <% end %>
+    <label for="delete">Delete Bookmark</label><br>
+    <% if @user_choice == "update" %>
+      <input type="radio" class="update" id="update" name="choice" value="update" onClick='this.form.submit();' checked="checked">
+    <% else %>
+      <input type="radio" id="update" name="choice" value="update" onClick='this.form.submit();'>
+    <% end %>
+    <label for="update">Update Bookmark</label><br>
+    <input type="radio" id="clear" name="choice" value="clear" onClick='this.form.submit();'>
+    <label for="clear">Clear Action</label><br>
+  </form>
+</h4>
+
+
+<% if @user_choice == "add" %>
+  <div class="field" id="action_div" style="display:block">
+<% else %> 
+  <div class="field" id="action_div" style="display:none"> 
+<% end %>
+  <h4 style="text-align: center;">
+    <form action="/add" method="post">
+      Please enter the url you wish to ADD below<br><br><input type="text" name="url"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  <h4>
+</div>
