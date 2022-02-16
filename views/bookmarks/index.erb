@@ -10,7 +10,7 @@ h2 {text-align: center;}
 <h4 style="padding-left:125px;">
   <ul>
     <% @bookmarks.each do |bookmark| %>
-      <li><%= bookmark %> <br></li>
+      <li><%= bookmark.title %> <br></li>
     <% end %>
  </ul>
 </h4>
@@ -50,7 +50,9 @@ h2 {text-align: center;}
 <% end %>
   <h4 style="text-align: center;">
     <form action="/add" method="post">
-      Please enter the url you wish to ADD below<br><br><input type="text" name="url"><br><br>
+      Please enter the Title and url you wish to ADD below
+      <br><br>Title:  <input type="text" name="title"><br><br>
+      <br><br>Url:    <input type="text" name="url"><br><br>
       <input type="submit" value="Submit">
     </form>
   <h4>

@@ -35,7 +35,8 @@ class BookmarkManager < Sinatra::Base
   post '/add' do
     @user_choice = $user_choice
     @url = params[:url]
-    Bookmark.add_bookmark(@url)
+    @title = params[:title]
+    Bookmark.add_bookmark(@url, @title)
     $user_choice = ""
     @user_choice = $user_choice
     $bookmarks = Bookmark.all

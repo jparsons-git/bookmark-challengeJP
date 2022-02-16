@@ -11,36 +11,31 @@ feature 'Bookmark testing' do
     # set connection to the test database
     connection = PG.connect(dbname: 'bookmark_manager_test')
     # Add the test data into table bookmarks
-    connection.exec("INSERT INTO bookmarks VALUES(1, 'http://www.makersacademy.com');")
-    connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.destroyallsoftware.com');")
-    connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.google.com');")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('http://www.makersacademy.com', 'Makers Academy');")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('http://www.destroyallsoftware.com', 'Destroy Software');")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('http://www.google.com', 'Google');")
+    # TODO I DON'T UNDERSTAND the url: and title: below??? It doesn't seem to work for me
+    # connection.exec("INSERT INTO bookmarks VALUES(url: 'http://www.makersacademy.com', title: 'Makers Academy');")
+    # connection.exec("INSERT INTO bookmarks VALUES(url: 'http://www.destroyallsoftware.com', title: 'Destroy Software');")
+    # connection.exec("INSERT INTO bookmarks VALUES(url: 'http://www.google.com', title: 'Google');")
 
     visit('/')
     expect(page).to have_content 'Welcome to the Bookmark Challenge'
     expect(page).to have_content 'Bookmark List'
-    expect(Bookmark.all).to include('http://www.google.com')
+    expect(page).to have_content 'Google'
   end
 
   scenario 'test to add a bookmark to the list' do
     # set connection to the test database
     connection = PG.connect(dbname: 'bookmark_manager_test')
     # Use the Bookmark's functionality to insert new url's 
-    Bookmark.add_bookmark("http://www.makersacademy.com")
-    Bookmark.add_bookmark("http://www.destroyallsoftware.com")
-    Bookmark.add_bookmark("http://www.google.com")
+    Bookmark.add_bookmark("http://www.makersacademy.com", "Makers Academy")
+    Bookmark.add_bookmark("http://www.destroyallsoftware.com", "Destroy Software")
+    Bookmark.add_bookmark("http://www.google.com", "Google")
   
     visit('/')
     expect(page).to have_content 'Welcome to the Bookmark Challenge'
     expect(page).to have_content 'Bookmark List'
-    expect(Bookmark.all).to include('http://www.google.com')
-
-    # find_field('options').choose('Add')
-    # # visit('/add')
-    # fill_in 'url', with: 'https://thoughtbot.com/upcase/test-driven-rails-resources/capybara.pdf'
-    # click_on 'Submit'
-    # Bookmark.add_bookmark('https://thoughtbot.com/upcase/test-driven-rails-resources/capybara.pdf')
-    # expect(page).to have_content 'Welcome to the Bookmark Challenge'
-    # expect(page).to have_content 'Bookmark List'
-    # expect(Bookmark.all).to include('https://thoughtbot.com/upcase/test-driven-rails-resources/capybara.pdf')
+    expect(page).to have_content 'Makers Academy'
   end
 end

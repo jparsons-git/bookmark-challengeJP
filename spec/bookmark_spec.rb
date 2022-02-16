@@ -12,10 +12,13 @@ describe Bookmark do
     # end
   end
 
-  describe '#add–bookmark method' do
-    it 'tests addc a new bookmark' do
-      Bookmark.add_bookmark('http://www.example.org')
-      expect(Bookmark.all).to include 'http://www.example.org'
+  describe '#add bookmark method' do
+    it 'tests add a new bookmark' do
+      # bookmark = Bookmark.add_bookmark('http://www.example.org', 'Example')
+      # TODO - consolidate what .first does
+      # I'm guessing it puts it ina position so that it can be retrieved first?
+      bookmark = Bookmark.add_bookmark('http://www.example.org', 'Example').first
+      expect(bookmark['title']).to eq 'Example'
     end
   end
 
