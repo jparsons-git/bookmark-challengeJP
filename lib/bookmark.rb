@@ -35,7 +35,14 @@ class Bookmark
     # connection.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}');")
     # TODO just make sure I understand the RETURNING...
     # I think it's there because otherwise it would just insert into the table without any feedback
-    connection.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}') RETURNING id, url, title;")
+    # connection.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}') RETURNING id, url, title;")
+
+    # CHANGES for STEP 12 - I do not understand THE WHY on this actually
+    connection.exec_params(
+      "INSERT INTO bookmarks (url, title) VALUES ($1, $2) RETURNING id, url, title;",
+      [url, title])
+
+    # Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])  
 
   end  
 
