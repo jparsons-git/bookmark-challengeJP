@@ -10,11 +10,16 @@ h2 {text-align: center;}
 <h4 style="padding-left:125px;">
   <ul>
     <% @bookmarks.each do |bookmark| %>
-      <li>
-        <a href="<%= bookmark.url %>"><%= bookmark.title %></a><br>
+      <li class="bookmark">
+        <form action="/bookmarks/<%= bookmark.id %>" method="post">
+          <a href="<%= bookmark.url %>"><%= bookmark.title %></a> 
+            <input type='hidden' name='_method' value='delete'/>
+            <input type="submit" value="delete" />
+         </form>
+        <br>
       </li>
     <% end %>
- </ul>
+  </ul>
 </h4>
 
 <h3 style="padding-left:150px;">Actions</h3>
